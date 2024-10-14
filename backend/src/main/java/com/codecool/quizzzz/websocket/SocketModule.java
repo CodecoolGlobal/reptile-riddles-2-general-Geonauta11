@@ -89,7 +89,6 @@ public class SocketModule {
     return (client, data, ackSender) -> {
       System.out.println("joining " + client);
       client.joinRoom(data.getGameId().toString());
-//      gameService.joinToGame(data.getGameId(), new NewPlayerDTO(data.getName()));
       int playerCount = gameRepository.findGameByUUID(data.getGameId()).get().getPlayerCount();
       server.getRoomOperations(data.getGameId().toString()).sendEvent("join", playerCount);
     };

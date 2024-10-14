@@ -109,7 +109,6 @@ public class GameService {
     Player player = game.getPlayerByPlayerId(playerId);
     Answer answer = game.getCurrentTask().getAnswerById(answerId).orElseThrow();
     int scoreGain = answer.isCorrect() ? game.calculateScoreGain(LocalDateTime.now()) : 0;
-    //TODO: make sure a player can't get points twice for the same question
     player.updateScore(scoreGain);
     return answer.isCorrect();
   }
